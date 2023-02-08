@@ -1,6 +1,6 @@
 <template>
   <div class="buttons">
-    <button class="copy">Duplicate</button>
+    <button class="copy" v-on:click="duplicate">Duplicate</button>
     <button class="changeBackground">Change Background</button>
     <button class="changeTitle">Change Title</button>
     <button id="delete">Delete
@@ -53,66 +53,18 @@ var cardCount = 1;
 
 var title = document.querySelector(".header");
 
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+export default {
+  methods: {
+    duplicate() {
+      copyButton.addEventListener("click", function (e) {
+        const clone = card.cloneNode(true);
+        document.body.appendChild(clone);
+        cardCount++;
+      });
+    }
   }
-  return color;
 }
 
-document.querySelector(".buttons").addEventListener("mouseover", function (e) {
-  e.target.style.color = "purple";
-});
-
-document.querySelector(".buttons").addEventListener("mouseleave", function (e) {
-  e.target.style.color = "black";
-});
-
-toggleBackground.addEventListener("click", function (e) {
-  card.style.backgroundColor = getRandomColor();
-  body.style.backgroundColor = getRandomColor();
-});
-
-detailButton.addEventListener("click", function (e) {
-  var paragraphs = wordsInCard;
-  if (paragraphs.style.display === "none") {
-    paragraphs.style.display = "block";
-  } else {
-    paragraphs.style.display = "none";
-  }
-});
-
-addEventListener("load", function (e) {
-  if (title.innerHTML === "Bryce Schneider") {
-    title.innerHTML = "Something Else";
-  } else {
-    title.innerHTML = "Bryce Schneider";
-  }
-});
-
-changeTitle.addEventListener("click", function (e) {
-  if (title.innerHTML === "Bryce Schneider") {
-    title.innerHTML = "Something Else";
-  } else {
-    title.innerHTML = "Bryce Schneider";
-  }
-});
-
-copyButton.addEventListener("click", function (e) {
-  const clone = card.cloneNode(true);
-  document.body.appendChild(clone);
-  cardCount++;
-});
-
-deleteButton.addEventListener("click", function (e) {
-  if (cardCount > 1) {
-    document.body.removeChild(document.querySelector(".card"));
-    cardCount--;
-  }
-});
-// if you are reading this you are very handsome
 
 </script>
 
