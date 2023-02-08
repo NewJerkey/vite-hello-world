@@ -56,7 +56,7 @@ var title = document.querySelector(".header");
 export default {
   methods: {
     duplicate() {
-      copyButton.addEventListener("click", function (e) {
+      document.querySelector(".copy").addEventListener("click", function (e) {
         const clone = card.cloneNode(true);
         document.body.appendChild(clone);
         cardCount++;
