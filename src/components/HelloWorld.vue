@@ -1,9 +1,9 @@
 <template>
   <div class="buttons">
     <button class="copy" v-on:click="duplicate">Duplicate</button>
-    <button class="changeBackground">Change Background</button>
-    <button class="changeTitle">Change Title</button>
-    <button id="delete">Delete
+    <button class="changeBackground" v-on:click="background">Change Background</button>
+    <button class="changeTitle" v-on:click="title">Change Title</button>
+    <button id="delete" v-on:click="delete">Delete
       Last Instance</button>
   </div>
   <div class="card">
@@ -30,20 +30,62 @@ defineProps({
 })
 
 const state = reactive({ count: 0 })
+const card = document.querySelector(".card");
 </script>
 
 <script>
-
-const card = document.querySelector(".card");
 
 export default {
 
   methods: {
 
+    getRandomColor() {
+      var letters = "0123456789ABCDEF";
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    },
+
     duplicate() {
+      const toggleBackground = document.querySelector(".changeBackground");
+
+      const changeTitle = document.querySelector(".changeTitle");
+
+      const deleteButton = document.querySelector("#delete");
+
+      const copyButton = document.querySelector(".copy");
+
+      const card = document.querySelector(".card");
+
+      const wordsInCard = document.querySelector("p");
+
+      const body = document.querySelector("body");
+
+      const detailButton = document.querySelector(".details");
+
+      var cardCount = 1;
+
+      var title = document.querySelector(".header");
+
       const clone = card.cloneNode(true);
       document.body.appendChild(clone);
     },
+
+    background() {
+      card.style.backgroundColor = getRandomColor();
+      body.style.backgroundColor = getRandomColor();
+    },
+
+    title() {
+
+    },
+
+    delete() {
+      document.body.removeChild(document.querySelector(".card:last-child"));
+    },
+
   }
 }
 
