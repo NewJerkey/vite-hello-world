@@ -34,13 +34,15 @@ const state = reactive({ count: 0 })
 
 <script>
 
+const card = document.querySelector(".card");
+
 export default {
+
   methods: {
 
     duplicate() {
-      const cloneCard = document.querySelector(".card").cloneNode(true);
-      document.body.appendChild(cloneCard);
-      console.log(cloneCard);
+      const clone = card.cloneNode(true);
+      document.body.appendChild(clone);
     },
   }
 }
