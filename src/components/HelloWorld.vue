@@ -10,7 +10,7 @@
     <h2 class="header">
       Bryce Schneider
     </h2>
-    <img alt="Schneider"
+    <img class="image" alt="Schneider"
       src="https://cdn.discordapp.com/attachments/1062806966021402684/1063160172773654659/IMG_9420.png" />
     <p class="paragraph">
       This image depicts a strapping young Penn State student reacting to an insane moment in his favorite class: IST
