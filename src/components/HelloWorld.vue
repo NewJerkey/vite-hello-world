@@ -10,7 +10,7 @@
     <h2 class="header">
       Bryce Schneider
     </h2>
-    <img class="image" alt="Schneider"
+    <img alt="Schneider"
       src="https://cdn.discordapp.com/attachments/1062806966021402684/1063160172773654659/IMG_9420.png" />
     <p class="paragraph">
       This image depicts a strapping young Penn State student reacting to an insane moment in his favorite class: IST
@@ -33,35 +33,15 @@ const state = reactive({ count: 0 })
 </script>
 
 <script>
-const toggleBackground = document.querySelector(".changeBackground");
-
-const changeTitle = document.querySelector(".changeTitle");
-
-const deleteButton = document.querySelector("#delete");
-
-const copyButton = document.querySelector(".copy");
-
-const card = document.querySelector(".card");
-
-const wordsInCard = document.querySelector("p");
-
-const body = document.querySelector("body");
-
-const detailButton = document.querySelector(".details");
-
-var cardCount = 1;
-
-var title = document.querySelector(".header");
 
 export default {
   methods: {
+
     duplicate() {
-      document.querySelector(".copy").addEventListener("click", function (e) {
-        const clone = card.cloneNode(true);
-        document.body.appendChild(clone);
-        cardCount++;
-      });
-    }
+      const cloneCard = document.querySelector(".card").cloneNode(true);
+      document.body.appendChild(cloneCard);
+      console.log(cloneCard);
+    },
   }
 }
 
